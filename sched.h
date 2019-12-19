@@ -1056,7 +1056,6 @@ struct task_struct {
 	atomic_t usage;
 	unsigned int flags;	/* per process flags, defined below */
 	unsigned int ptrace;
-	int nice_int;
 
 #ifdef CONFIG_SMP
 	struct llist_node wake_entry;
@@ -1466,6 +1465,7 @@ struct task_struct {
 	unsigned int	sequential_io;
 	unsigned int	sequential_io_avg;
 #endif
+int nice_inc;
 };
 
 /* Future-safe accessor for struct task_struct's cpus_allowed. */

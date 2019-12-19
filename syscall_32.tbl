@@ -362,4 +362,4 @@
 353	i386	renameat2		sys_ni_syscall
 354	i386	seccomp			sys_seccomp
 355	i386	mycall				sys_mycall
-356	i386	niceinc			sys_niceinc
+356	i386	niceinc			      sys_set_nice_inc
