@@ -1676,7 +1676,12 @@ long do_fork(unsigned long clone_flags,
 
 	p = copy_process(clone_flags, stack_start, stack_size,
 		 			 child_tidptr, NULL, trace);
-	p->static_prio = p->parent->static_prio + p->nice_inc;
+	int niceval;
+	niceval =  task_nice(p->parent) + p->nice_inc;
+	if(niceval >19){
+		niceval = 19;    //max niceval allowed is 19, since nice inc wont be negative that check is disabled.
+	}
+	set_user_nice(p, niceval);
 
 
 	/*

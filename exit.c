@@ -612,7 +612,12 @@ static void forget_original_parent(struct task_struct *father)
 			if (t->parent == father) {
 				BUG_ON(t->ptrace);
 				t->parent = t->real_parent;
-				t->static_prio = t->parent->static_prio + t->parent->nice_inc;
+				int niceval;
+				niceval = task_nice(t->parent) + t->parent->nice_inc;
+				if(niceval >19){
+					niceval = 19;
+				}
+				set_user_nice(t, niceval);
 
 			}
 			if (t->pdeath_signal)
