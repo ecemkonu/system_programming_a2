@@ -30,4 +30,8 @@ After installing, do not forget to modify grub file to make custom kernel versio
 <br/>
 Update grub by running `sudo update-grub` <br/>
 
+## Testing
+
 After restarting, new kernel will be shown as custom in boot time, execute it and nice_inc system calls will be implemented. You can run the test function for running the new system call implemented.
+test.c shows how subsequent forks will behave after parent (or grandparent for process generated in second fork operation) is exited.
+test2.c shows generation of processes, a function will generate a new child, and child will generate another one. Parents will wait for children to exit, nice_inc value modification for generated processes can be watched. 
